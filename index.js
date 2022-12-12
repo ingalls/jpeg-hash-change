@@ -17,7 +17,7 @@ if (!argv.help) main(argv);
 
 async function main(argv) {
     const input = argv['input-dir'] ? path.resolve(process.cwd(), argv['input-dir']) : process.cwd();
-    const output = argv['output-dir'] ? path.resolve(process.cwd(), argv['input-dir']) : '/tmp/';
+    const output = argv['output-dir'] ? path.resolve(process.cwd(), argv['output-dir']) : '/tmp/';
 
     await mkdirp(output);
 
@@ -37,7 +37,7 @@ async function main(argv) {
 
             const newimage = JPEG.encode(image, 100);
 
-            if (!argv.silent) console.log(`Writing: ${file.name}-${m+1}x.jpg`);
+            if (!argv.silent) console.log(`Writing: ${path.resolve(output, `${file.name}-${m+1}x.jpg`)}`);
             await fs.writeFile(path.resolve(output, `${file.name}-${m+1}x.jpg`), newimage.data);
         }
 
