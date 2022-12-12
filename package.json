@@ -1,0 +1,28 @@
+{
+    "name": "jpeg-hash-change",
+    "type": "module",
+    "version": "1.0.0",
+    "description": "<h1 align=center>jpeg-hash-change</h1>",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ingalls/jpeg-hash-change.git"
+    },
+    "author": "Nick Ingalls <nick@ingalls.ca>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ingalls/jpeg-hash-change/issues"
+    },
+    "homepage": "https://github.com/ingalls/jpeg-hash-change#readme",
+    "dependencies": {
+        "jpeg-js": "^0.4.4",
+        "minimist": "^1.2.7"
+    },
+    "devDependencies": {
+        "eslint": "^8.29.0",
+        "eslint-plugin-node": "^11.1.0"
+    }
+}
