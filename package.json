@@ -19,7 +19,8 @@
     "homepage": "https://github.com/ingalls/jpeg-hash-change#readme",
     "dependencies": {
         "jpeg-js": "^0.4.4",
-        "minimist": "^1.2.7"
+        "minimist": "^1.2.7",
+        "mkdirp": "^1.0.4"
     },
     "devDependencies": {
         "eslint": "^8.29.0",
