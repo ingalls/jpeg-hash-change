@@ -33,11 +33,9 @@ async function main(argv) {
 
         for (let m = 0; m < (argv.multiple || 2); m++) {
             //Eventually this could be smarter by checking for channels before changing
-            console.error('PRE', image.data[0]);
             image.data[0] = m
-            console.error('POST', image.data[0]);
 
-            const newimage = JPEG.encode(image);
+            const newimage = JPEG.encode(image, 100);
 
             if (!argv.silent) console.log(`Writing: ${file.name}-${m+1}x.jpg`);
             await fs.writeFile(path.resolve(output, `${file.name}-${m+1}x.jpg`), newimage.data);
