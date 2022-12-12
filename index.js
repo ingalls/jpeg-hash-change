@@ -27,13 +27,15 @@ async function main(argv) {
         file = path.parse(path.resolve(input, file))
         if (file.ext.toLowerCase() !== '.jpg') continue;
 
-        const image = JPEG.decode(await fs.readFile(path.resolve(input, file.base)), {
-            useTArray: true
-        });
-
         for (let m = 0; m < (argv.multiple || 2); m++) {
-            //Eventually this could be smarter by checking for channels before changing
-            image.data[0] = m
+            const image = JPEG.decode(await fs.readFile(path.resolve(input, file.base)), {
+                useTArray: true
+            });
+
+            for (let rand_i = 0; rand_i < (argv.random || 100); rand_i++) {
+                const rand = Math.floor(Math.random() * (image.data.length + 1))
+                image.data[rand]++;
+            }
 
             const newimage = JPEG.encode(image, 100);
 
@@ -54,7 +56,8 @@ function help() {
     console.log('   --help              Print this help documentation');
     console.log('   --input-dir  | -i   Input directory for JPEG images');
     console.log('   --output-dir  | -o  Output directory for JPEG images');
-    console.log('   --multiply          Number of times to multiple input images (default 2x)');
+    console.log('   --multiply          Number of times to multiple input images (default: 2x)');
+    console.log('   --random            Number of bit values to change (default: 100)');
     console.log();
     console.log('[example]:');
     console.log('   node index.js --input-dir ~/Downloads/jpegs/ --output-dir /tmp/ --multiply 3');
