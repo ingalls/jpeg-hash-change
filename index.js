@@ -33,7 +33,9 @@ async function main(argv) {
 
         for (let m = 0; m < (argv.multiple || 2); m++) {
             //Eventually this could be smarter by checking for channels before changing
+            console.error('PRE', image.data[0]);
             image.data[0] = m
+            console.error('POST', image.data[0]);
 
             const newimage = JPEG.encode(image);
 
